@@ -1,3 +1,4 @@
+// src/transaction/entities/transaction.entity.ts
 import {
   Entity,
   Column,
@@ -8,7 +9,6 @@ import {
   ManyToOne,
   ManyToMany,
   JoinTable,
-  JoinColumn,
 } from 'typeorm';
 import { Account } from '../../account/entities/account.entity';
 import { Category } from '../../category/entities/category.entity';
@@ -39,11 +39,10 @@ export class Transaction {
   date: string;
 
   @ManyToMany(() => Category, (category) => category.transactions)
-  @JoinTable()
-  category?: Category;
+  @JoinTable() // Define join table here for many-to-many relationship
+  categories: Category[];
 
   @ManyToOne(() => Account, (account) => account.transactions)
-  @JoinColumn()
   account: Account;
 
   @CreateDateColumn({ type: 'timestamp' })

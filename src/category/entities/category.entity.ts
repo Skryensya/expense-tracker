@@ -1,4 +1,4 @@
-import { User } from 'src/user/entities/user.entity';
+// src/category/entities/category.entity.ts
 import {
   Entity,
   Column,
@@ -7,10 +7,10 @@ import {
   UpdateDateColumn,
   DeleteDateColumn,
   ManyToMany,
-  JoinTable,
   ManyToOne,
   JoinColumn,
 } from 'typeorm';
+import { User } from '../../user/entities/user.entity';
 import { Transaction } from '../../transaction/entities/transaction.entity';
 import { TransactionType } from '../../transaction/entities/transaction.entity';
 
@@ -25,14 +25,18 @@ export class Category {
   @Column()
   description: string;
 
-  @Column()
+  @Column({
+    type: 'enum',
+    enum: TransactionType, // Specify the enum
+    enumName: 'transaction_type', // Provide a custom name for the enum type in PostgreSQL
+  })
   type: TransactionType;
 
   @ManyToOne(() => User, (user) => user.categories)
   @JoinColumn()
   user: User;
 
-  @ManyToMany(() => Transaction, (transaction) => transaction.category)
+  @ManyToMany(() => Transaction, (transaction) => transaction.categories)
   transactions?: Transaction[];
 
   @CreateDateColumn({ type: 'timestamp' })

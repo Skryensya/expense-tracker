@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "Expense-tracker",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}

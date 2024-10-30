@@ -1,0 +1,26 @@
+meta {
+  name: Get All
+  type: http
+  seq: 3
+}
+
+get {
+  url: http://{{baseURL}}/category
+  body: multipartForm
+  auth: none
+}
+
+body:json {
+  {
+    "name": "allison",
+    "lastname": "peña",
+    "username": "skryensya",
+    "email": "allison.jpb@gmailc.om",
+    "password": "12345678"
+  }
+  
+}
+
+body:multipart-form {
+  : 
+}

@@ -1,0 +1,30 @@
+meta {
+  name: Delete
+  type: http
+  seq: 5
+}
+
+delete {
+  url: http://{{baseURL}}/user/{{_requestId}}
+  body: multipartForm
+  auth: none
+}
+
+body:json {
+  {
+    "name": "allison",
+    "lastname": "peña",
+    "username": "skryensya",
+    "email": "allison.jpb@gmailc.om",
+    "password": "12345678"
+  }
+  
+}
+
+body:multipart-form {
+  : 
+}
+
+vars:pre-request {
+  _requestId: 3
+}

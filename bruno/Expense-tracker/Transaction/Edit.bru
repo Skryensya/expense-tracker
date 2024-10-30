@@ -1,0 +1,30 @@
+meta {
+  name: Edit
+  type: http
+  seq: 1
+}
+
+patch {
+  url: http://{{baseURL}}/user/{{_requestId}}
+  body: multipartForm
+  auth: none
+}
+
+body:json {
+  {
+    "name": "allison",
+    "lastname": "peña",
+    "username": "skryensya",
+    "email": "allison.jpb@gmailc.om",
+    "password": "12345678"
+  }
+  
+}
+
+body:multipart-form {
+  : 
+}
+
+vars:pre-request {
+  _requestId: 1
+}
